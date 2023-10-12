@@ -25,6 +25,14 @@
         .module > .fas {
           float: right;
         }
+        .module .hidden-area {
+            height: 0px;
+            overflow: hidden;
+            transition: height 500ms ease-in-out;
+        }
+        #output-pane:hover .module .hidden-area {
+            height: 50px;
+        }
         #input-area img.favicon {
             display: inline-block;
             width: 36px;
@@ -45,6 +53,8 @@
         .intro-description {
           font-size: 22px;
           font-family: 'Ibarra Real Nova', serif;
+          text-shadow: 4px 4px 4px rgba(0,0,0,0.02);
+          color: #ffdada;
         }
         .module h3 {
           border-bottom: 1px dashed rgba(0,0,0,0.05);
@@ -57,43 +67,47 @@
           font-size: 24px;
           font-family: 'Ibarra Real Nova', serif;
         }
+        button:hover, a.button:hover {
+            box-shadow: 4px 4px 4px rgba(0,0,0,0.2);
+        }
     </style>
 </head>
 <body class="bg-gray-100 h-screen flex flex-col">
-    <header class="bg-red-600 text-white py-6 shadow-md text-center">
-        <h1 class="text-center text-6xl font-bold" style="margin-bottom: 22px">DigestBox</h1>
+    <header class="py-6 shadow-md text-center">
+        <h1 class="text-center text-5xl font-bold" style="margin-bottom: 22px">DigestBox</h1>
         
-        <img src="logo.png" style="width: 110px; display: inline-block; margin-bottom: 10px; opacity: 0.7"/><br/>
-        <i class="text-center" style="color: #333; opacity: 0.6">A free tool brought to you by <a href="https://archivebox.io" target="_blank">ArchiveBox.io</a></i>
+        
+        <i class="text-center" style="color: #333; opacity: 0.6">A free tool brought to you by <a href="https://archivebox.io" target="_blank" class="hover:shadow-md">ArchiveBox.io</a></i>
     </header>
     <main class="flex-1 p-4 md:p-8">
         <div class="max-w-6xl mx-auto">
-            <div class="text-center">
+            <div class="text-center bg-red-600 text-white rounded" style="color: #e0efef">
                 <br/>
-              <b class="intro-description">DigestBox takes <u>any webpage</u> (news article, video page, comment thread, etc.) and extracts the <u>juicy content</u> within.</b>
-              <br/><br/>
+              <b class="intro-description">Get all the <u>juicy content</u> from <u>any webpage</u> in 1 click.</b>
+              
 
 
-              <div id="input-area" class="rounded bg-gray-200 p-6">
-                <i class="fas fa-globe py-2 text-3xl align-center"></i>
-                <img src="data:," class="favicon"/> &nbsp;
-                <textarea id="url-input" class="w-2/3 p-2 border rounded align-top text-xl" placeholder="https://example.com/webpage/or/article.html" rows="1" style="display: inline-block; min-height: 50px; margin-top: -1px"></textarea>
-                <button id="digest-btn" class="w-1/4 bg-red-600 text-xl text-white py-2 rounded align-top shadow-md hover:shadow-lg hover:bg-red-700 hover:border-white border-solid border-2 border-black">
-                  Digest &nbsp; &nbsp;<i class="fas fa-cutlery"></i>
-                </button>
-              </div>
+                <br/><br/>
+                <center>
+                  <img src="example-diagram.png" style="height: 250px; display: inline; opacity: 0.8"/>
+                </center>
+                <br/>
 
               <div id="progress-bar" class="w-full bg-red-200 rounded overflow-hidden" style="opacity: 0.7">
                   <div class="h-2 bg-red-600"></div>
               </div>
+              <div id="input-area" class="rounded bg-gray-200 p-6">
+                <i class="fas fa-globe py-2 text-3xl align-center"></i>
+                <img src="data:," class="favicon"/> &nbsp;
+                <textarea id="url-input" class="w-2/3 p-2 border rounded align-top text-xl" placeholder="https://example.com/paste-a-URL-here.html" rows="1" style="display: inline-block; min-height: 50px; margin-top: -1px; color: #1a1a1a"></textarea>
+                <button id="digest-btn" class="w-1/4 bg-red-600 text-xl text-white py-2 rounded align-top shadow-md hover:bg-red-700 hover:border-white border-solid border-2" style="border-color: #9e0000">
+                  Digest &nbsp; &nbsp;<i class="fas fa-cutlery"></i>
+                </button>
+              </div>
+
             </div>
 
 
-            <br/><br/>
-            <center>
-              <img src="example-diagram.png" style="height: 260px; display: inline; opacity: 0.8"/>
-            </center>
-            <br/><br/>
 
             <div class="w-full bg-red-200 rounded mb-4 overflow-hidden" style="opacity: 0.8">
                 <div class="h-2 bg-red-600"></div>
@@ -104,37 +118,45 @@
                 <div class="module p-4 bg-white rounded shadow-md relative opacity-50" id="title-pane">
                     <i class="fas fa-heading mb-2"></i>
                     <h3 class="font-bold">Title</h3>
-                    <p>The title of the page will be displayed here.</p>
-                    <div class="text-right">
-                      <button class="text-black px-4 py-1 rounded mt-2"><i class="fas fa-download"></i></button>
+                    <div class="hidden-area">
+                        <p>The title of the page will be displayed here.</p>
+                        <div class="text-right">
+                          <button class="text-black px-4 py-1 rounded mt-2"><i class="fas fa-download"></i></button>
+                        </div>
                     </div>
                 </div>
                 <!-- Favicon Module -->
                 <div class="module p-4 bg-white rounded shadow-md relative opacity-50" id="favicon-pane">
                     <i class="fas fa-image mb-2"></i>
                     <h3 class="font-bold">Favicon</h3>
-                    <p>Favicon will be displayed here.</p>
+                    <div class="hidden-area">
+                        <p>Favicon will be displayed here.</p>
                     
-                    <div class="text-right">
-                      <button class="text-black px-4 py-1 rounded mt-2"><i class="fas fa-download"></i></button>
+                        <div class="text-right">
+                          <button class="text-black px-4 py-1 rounded mt-2"><i class="fas fa-download"></i></button>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="module p-4 bg-white rounded shadow-md relative opacity-50" id="screenshot-pane">
                     <i class="fas fa-camera mb-2"></i>
                     <h3 class="font-bold">Screenshot</h3>
-                    <p>A screenshot of the page will be displayed here.</p>
-                    <div class="text-right">
-                      <button class="text-black px-4 py-1 rounded mt-2"><i class="fas fa-download"></i></button>
+                    <div class="hidden-area">
+                            <p>A screenshot of the page will be displayed here.</p>
+                        <div class="text-right">
+                          <button class="text-black px-4 py-1 rounded mt-2"><i class="fas fa-download"></i></button>
+                        </div>
                     </div>
                 </div>
                 <!-- PDF Module -->
                 <div class="module p-4 bg-white rounded shadow-md relative opacity-50" id="pdf-pane">
                     <i class="fas fa-file-pdf mb-2"></i>
                     <h3 class="font-bold">PDF</h3>
-                    <p>A PDF of the page will be displayed here.</p>
-                    <div class="text-right">
-                      <button class="text-black px-4 py-1 rounded mt-2"><i class="fas fa-download"></i></button>
+                    <div class="hidden-area">
+                        <p>A PDF of the page will be displayed here.</p>
+                        <div class="text-right">
+                          <button class="text-black px-4 py-1 rounded mt-2"><i class="fas fa-download"></i></button>
+                        </div>
                     </div>
                 </div>
 
@@ -258,7 +280,6 @@
                 <!-- ... add similar blocks for each module you have ... -->
             </div>
             <br/>
-            <hr/>
             <br/>
             <div id="download-section" class="text-center">
               <button id="digest-btn" class="bg-blue-900 text-white py-2 rounded mb-4 px-4 mx-5">View results as spreadsheet <img src="sheets-icon.png" alt="" style="height: 20px; display: inline-block; margin-left: 4px; vertical-align: -4px"/></button>
@@ -269,13 +290,14 @@
 
         <br/><br/>
         <hr/>
-        <br/>
+        <br/><br/><br/>
         <div class="max-w-6xl mx-auto border-3 rounded p-10" style="font-size: 1.1em; border: 3px solid gold; background-color: #ffeaea">
             <i>Want more? Pay just 1¢ per URL to use DigestBox PRO:</i>
-            <br/><br/>
-            <a href="#" class="button text-3xl bg-gray-900 text-white rounded p-4" style="display: block; float: right; margin-right: 20px">
+            <br/>
+            <a href="#" class="button text-3xl bg-gray-900 text-white rounded p-4" style="display: block; float: right; margin: 20px">
                 Use PRO for 1¢/URL<i class="fas fa-arrow-right" style="color: gold"></i>
             </a>
+            <br/>
             <ul style="list-style: circle">
                 <li>Crawl entire sites/domains with advanced configuration options</li>
                 <li>Set up repeating snapshots of sites on a schedule & auto-import from RSS/social media</li>
@@ -284,6 +306,10 @@
                 <li><i>And more...</i></li>
             </ul>
         </div>
+        <br/><br/><br/>
+        <center>
+            <img src="logo.png" style="width: 90px; display: inline-block; margin-bottom: 10px; opacity: 0.7;"/><br/><br/>
+        </center>
     </main>
     <footer class="py-4 bg-gray-800 text-white text-center">
         <a href="https://github.com/ArchiveBox/ArchiveBox" target="_blank" class="mx-2">GitHub</a>
