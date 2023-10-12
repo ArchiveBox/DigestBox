@@ -2,6 +2,8 @@
 
 DigestBox takes any webpage URL (news article, video link, comment thread, etc.) and gives you just the raw content.
 
+[ATTENTION: This is just a design mockup. Comment here and share your thoughts if you want this to exist!](https://github.com/ArchiveBox/DigestBox/issues/1)
+
 <img width="1212" alt="image" src="https://github.com/ArchiveBox/DigestBox/assets/511499/304ead3a-0b44-4a8c-82da-eb4b04a20931">
 
 
