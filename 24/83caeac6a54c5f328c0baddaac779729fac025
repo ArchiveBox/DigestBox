@@ -1,0 +1,14 @@
+site-chrome.css
+  h_923c208e183a7b 2-4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "2483caeac6a54c5f328c0baddaac779729fac025",
+  "prompts": {},
+  "humans": {
+    "h_923c208e183a7b": {
+      "author": "Nick Sweeting <git@sweeting.me>"
+    }
+  }
+}
